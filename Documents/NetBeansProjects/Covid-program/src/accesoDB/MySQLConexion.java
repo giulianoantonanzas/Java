@@ -13,7 +13,7 @@ public class MySQLConexion {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			String url = "jdbc:mysql://localhost:3306/Examen_Parcial_2";
+			String url = "jdbc:mysql://localhost:3306/covid";
 
 			String usuario = "root";
 
