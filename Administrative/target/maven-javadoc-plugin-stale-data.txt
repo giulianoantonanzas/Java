@@ -1,0 +1,25 @@
+cmd.exe
+/X
+/C
+""C:\Program Files (x86)\Java\jdk1.8.0_111\jre\..\bin\javadoc.exe" @options @argfile"
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\allclasses-frame.html = 1609833965219
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\allclasses-noframe.html = 1609833965236
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\argfile = 1609833959024
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\constant-values.html = 1609833964444
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\deprecated-list.html = 1609833965171
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\help-doc.html = 1609833965349
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\index-all.html = 1609833965103
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\index.html = 1609833965259
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\options = 1609833959021
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\overview-frame.html = 1609833963320
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\overview-summary.html = 1609833965296
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\overview-tree.html = 1609833965035
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\package-frame.html = 1609833963338
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\package-list = 1609833963313
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\package-summary.html = 1609833963373
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\package-tree.html = 1609833963418
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\package-use.html = 1609833964850
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\script.js = 1609833965394
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\serialized-form.html = 1609833964552
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\StartAplication.html = 1609833962986
+C:\Users\patyg\Documents\NetBeansProjects\Administrative\target\site\apidocs\stylesheet.css = 1609832859319
