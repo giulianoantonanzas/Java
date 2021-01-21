@@ -295,11 +295,20 @@ public class VentaNuevaForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
+             DetalleFactura detalleFactura= new DetalleFactura();
+            
+            for (int i = 0; i < productosFacturados.size(); i++) {
+                productosFacturados.get(i).setDetalle_factura(detalleFactura);
+            }
+            
+            detalleFactura.setProductos_facturados(productosFacturados);
+            detalleFactura.setIva(Integer.parseInt(ivaTxt.getText()));
+            detalleFactura.setTotal_pagar_peso(Float.parseFloat(totalPesoTxt.getText()));
+            detalleFactura.setTotal_pagar_peso(Float.parseFloat(totalDolarTxt.getText()));
+            
+            
             venta.setFactura(new Factura(cliente, Date.from(Instant.now()), tipoFacturaTxt.getText(), //agregar detalle factura y tipo de factura al form
-                    new DetalleFactura(productosFacturados,
-                            Integer.parseInt(ivaTxt.getText()),
-                            Float.parseFloat(totalPesoTxt.getText()),
-                            Float.parseFloat(totalDolarTxt.getText()))));
+                    detalleFactura));
 
             managerVenta.addVenta(venta);
             this.dispose();
