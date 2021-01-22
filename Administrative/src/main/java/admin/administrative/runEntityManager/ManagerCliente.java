@@ -7,7 +7,6 @@ package admin.administrative.runEntityManager;
 
 import admin.administrative.models.Cliente;
 import admin.administrative.models.Factura;
-import admin.administrative.models.Venta;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -42,7 +41,7 @@ public class ManagerCliente {
         no va a mostrar de quien es la factura, esto depende mucho del deseo del cliente , si quiere que se eliminen las 
         ventas , simplemente se descomenta lo quee esta comentado y se quita lo que esta hecho en la factura (darle valor nulo al cliente),
         luego simplemente remuevo esa venta.*/
-        
+
         em = new EntitiesManager();
         em.getManager().getTransaction().begin();
         CriteriaBuilder cb = em.getManager().getCriteriaBuilder();
@@ -136,6 +135,19 @@ public class ManagerCliente {
                 tablaClientes.getModel().setValueAt(new SimpleDateFormat("dd-MM-yyyy").format(clientes.get(i).getFecha_nacimiento()), i, 3);
             }
         }
+    }
+
+    public List<Cliente> buscarCliente(String condicion) {
+        em = new EntitiesManager();
+        em.getManager().getTransaction().begin();
+
+        List<Cliente> clientes = em.getManager().createQuery(
+                "SELECT c FROM cliente c where c.nombre='" + condicion + "' OR c.apellido='" + condicion + "'", Cliente.class)
+                .getResultList();
+        
+        em.getManager().close();
+        
+        return clientes;
     }
 
 }

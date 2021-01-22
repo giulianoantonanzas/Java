@@ -39,8 +39,8 @@ public class ClienteForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        buscarBtn = new javax.swing.JButton();
+        buscarTxt = new javax.swing.JTextField();
         agregarBtn = new javax.swing.JButton();
         editarBtn = new javax.swing.JButton();
         eliminarBtn = new javax.swing.JButton();
@@ -87,7 +87,12 @@ public class ClienteForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Buscar");
 
-        jButton4.setText("Buscar");
+        buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
 
         agregarBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         agregarBtn.setText("Agregar");
@@ -140,9 +145,9 @@ public class ClienteForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(buscarTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(verDetallesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -161,8 +166,8 @@ public class ClienteForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(buscarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,7 +200,7 @@ public class ClienteForm extends javax.swing.JFrame {
     }//GEN-LAST:event_verDetallesBtnActionPerformed
 
     private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
-        actualizarTabla();
+        actualizarTabla(clientes = managerCliente.getClientes());
     }//GEN-LAST:event_actualizarBtnActionPerformed
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
@@ -239,8 +244,12 @@ public class ClienteForm extends javax.swing.JFrame {
                 }
             }
         }
-        actualizarTabla();
+        actualizarTabla(clientes = managerCliente.getClientes());
     }//GEN-LAST:event_eliminarBtnActionPerformed
+
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+       actualizarTabla(managerCliente.buscarCliente(buscarTxt.getText()));
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,12 +305,12 @@ public class ClienteForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarBtn;
     private javax.swing.JButton agregarBtn;
+    private javax.swing.JButton buscarBtn;
+    private javax.swing.JTextField buscarTxt;
     private javax.swing.JButton editarBtn;
     private javax.swing.JButton eliminarBtn;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablaClientes;
     private javax.swing.JButton verDetallesBtn;
     // End of variables declaration//GEN-END:variables
@@ -314,10 +323,9 @@ public class ClienteForm extends javax.swing.JFrame {
         this.tablaClientes = tablaClientes;
     }
 
-    public void actualizarTabla() {
+    public void actualizarTabla(List<Cliente> clientes) {
         try {
             //obtengo todos los clientes de mi base de datos
-            clientes = managerCliente.getClientes();
 
             managerCliente.instanciarTablaCliente(tablaClientes, clientes.size());
             managerCliente.darValoresTabla(tablaClientes, clientes);
@@ -326,4 +334,10 @@ public class ClienteForm extends javax.swing.JFrame {
             System.out.println("Hubo un error al conectar con los clientes");
         }
     }
+
+    public ManagerCliente getManagerCliente() {
+        return managerCliente;
+    }
+    
+    
 }

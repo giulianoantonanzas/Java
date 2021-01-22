@@ -124,4 +124,18 @@ public class ManagerProducto {
             tablaProductos.getModel().setValueAt(productos.get(i).getPrecio_dolar(), i, 5);
         }
     }
+    
+    
+     public List<Producto> buscarProducto(String condicion) {
+        em = new EntitiesManager();
+        em.getManager().getTransaction().begin();
+        
+        List<Producto> productos = em.getManager().createQuery(
+                "SELECT p FROM producto p where p.nombre='"+condicion+"' OR p.detalle='"+condicion+"'",Producto.class)
+                .getResultList();
+        
+        em.getManager().close();
+        
+        return productos;
+    }
 }

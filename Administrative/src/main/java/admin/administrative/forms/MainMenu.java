@@ -381,13 +381,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void abrirClientes(){
         esperarCarga();
-        clienteForm.actualizarTabla();
+        clienteForm.actualizarTabla(clienteForm.getManagerCliente().getClientes());
         clienteForm.setVisible(true);
     }
     
     public void abrirProductos(){
         esperarCarga();
-        productoForm.actualizarTabla();
+        productoForm.actualizarTabla(productoForm.getManagerProducto().getProductos());
         productoForm.setVisible(true);
     }
 }

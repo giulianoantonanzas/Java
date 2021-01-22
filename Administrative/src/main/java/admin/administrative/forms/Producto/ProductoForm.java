@@ -46,8 +46,8 @@ public class ProductoForm extends javax.swing.JFrame {
     private void initComponents() {
 
         editarBtn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        buscarTxt = new javax.swing.JTextField();
+        buscarBtn = new javax.swing.JButton();
         agregarBtn = new javax.swing.JButton();
         eliminarBtn = new javax.swing.JButton();
         verDetallesBtn = new javax.swing.JButton();
@@ -66,10 +66,10 @@ public class ProductoForm extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buscarBtnActionPerformed(evt);
             }
         });
 
@@ -165,9 +165,9 @@ public class ProductoForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(buscarTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -176,17 +176,16 @@ public class ProductoForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(buscarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(actualizarBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(agregarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(verDetallesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(actualizarBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(agregarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verDetallesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(eliminarBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(editarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -215,12 +214,12 @@ public class ProductoForm extends javax.swing.JFrame {
             System.out.println(e);
         }
 
-        actualizarTabla();
+        actualizarTabla(managerProducto.getProductos());
     }//GEN-LAST:event_editarBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        actualizarTabla(managerProducto.buscarProducto(buscarTxt.getText()));
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
     private void verDetallesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetallesBtnActionPerformed
         try {
@@ -239,7 +238,7 @@ public class ProductoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_verDetallesBtnActionPerformed
 
     private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
-        actualizarTabla();
+        actualizarTabla(managerProducto.getProductos());
     }//GEN-LAST:event_actualizarBtnActionPerformed
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
@@ -269,7 +268,7 @@ public class ProductoForm extends javax.swing.JFrame {
                 }
             }
         }
-        actualizarTabla();
+        actualizarTabla(managerProducto.getProductos());
     }//GEN-LAST:event_eliminarBtnActionPerformed
 
     /**
@@ -310,12 +309,12 @@ public class ProductoForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarBtn;
     private javax.swing.JButton agregarBtn;
+    private javax.swing.JButton buscarBtn;
+    private javax.swing.JTextField buscarTxt;
     private javax.swing.JButton editarBtn;
     private javax.swing.JButton eliminarBtn;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JButton verDetallesBtn;
     // End of variables declaration//GEN-END:variables
@@ -327,10 +326,8 @@ public JTable getTablaProductos() {
         this.tablaProductos = tablaProductos;
     }
 
-    public void actualizarTabla() {
+    public void actualizarTabla(List<Producto> productos) {
         try {
-            //obtengo todos los clientes de mi base de datos
-            productos = managerProducto.getProductos();
             managerProducto.inicializarTabla(tablaProductos, productos.size());
             managerProducto.darValoresTabla(tablaProductos, productos);
         } catch (Exception e) {
@@ -338,4 +335,7 @@ public JTable getTablaProductos() {
         }
     }
 
+    public ManagerProducto getManagerProducto() {
+        return managerProducto;
+    }
 }
